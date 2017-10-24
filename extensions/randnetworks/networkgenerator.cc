@@ -246,12 +246,6 @@ NodeContainer NetworkGenerator::getCustomNodes(std::string setIdentifier)
 
 void NetworkGenerator::creatRandomLinkFailure(double minTimestamp, double maxTimestamp, double minDuration, double maxDuration)
 {
-  creatRandomLinkFailure(minTimestamp, maxTimestamp, minDuration, maxDuration, 1.0, 1.0);
-}
-
-void NetworkGenerator::creatRandomLinkFailure(double minTimestamp, double maxTimestamp, double minDuration, double maxDuration,
-                                              double minErrorRate, double maxErrorRate)
-{
   int rand = rvariable->GetInteger(0,getNumberOfAS() - 1);
 
   NodeContainer c = getAllASNodesFromAS(rand);
@@ -277,7 +271,7 @@ void NetworkGenerator::creatRandomLinkFailure(double minTimestamp, double maxTim
     double startTime = rvariable->GetValue (minTimestamp, maxTimestamp);
     double stopTime = startTime + rvariable->GetValue (minDuration, maxDuration);
 
-    double errorRate = rvariable->GetValue(minErrorRate, maxErrorRate);
+    double errorRate = 1.0;
 
     //std::cout << "Fail Link between " << channelNodes.Get(0)->GetId() << " and " << channelNodes.Get (1)->GetId() << " from " << startTime << " to " << stopTime << std::endl;
     std::stringstream loggingInfo;
@@ -285,7 +279,7 @@ void NetworkGenerator::creatRandomLinkFailure(double minTimestamp, double maxTim
     m_linkFailures.push_back(loggingInfo.str());
 
     // todo: add error rate
-    Simulator::Schedule (MilliSeconds (startTime), ns3::ndn::LinkControlHelper::FailLink, channelNodes.Get (0), channelNodes.Get (1), errorRate);
+    Simulator::Schedule (MilliSeconds (startTime), ns3::ndn::LinkControlHelper::FailLink, channelNodes.Get (0), channelNodes.Get (1));
     Simulator::Schedule (MilliSeconds (stopTime), ns3::ndn::LinkControlHelper::UpLink,   channelNodes.Get (0), channelNodes.Get (1));
 
     //fprintf(stderr, "Start LinkFail between %s and %s: %f\n",Names::FindName (channelNodes.Get (0)).c_str (),Names::FindName (channelNodes.Get (1)).c_str (), startTime);

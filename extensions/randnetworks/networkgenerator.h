@@ -155,18 +155,6 @@ public:
   void creatRandomLinkFailure(double minTimestamp, double maxTimestamp, double minDuration, double maxDuration);
 
   /**
-   * @brief creatRandomLinkFailure creates a random linkfailure using the ns3::RateErrorModel
-   * between a given node specified in the BRITE config file and a noded connected to it.
-   * @param minTimestamp the erliest time when the link failure occurs.
-   * @param maxTimestamp the latest time when the link failure occurs.
-   * @param minDuration the min duration of a link failure
-   * @param maxDuration the max duration of a link failure
-   * @param minErrorRate The minimum error rate during a link failure
-   * @param maxErrorRate The maximum error rate during a link failure
-   */
-  void creatRandomLinkFailure(double minTimestamp, double maxTimestamp, double minDuration, double maxDuration, double minErrorRate, double maxErrorRate);
-
-  /**
    * @brief introduceError introduces uniform random link errors on all links
    * @param min_error_rate minimum link error rate on a given link
    * @param max_error_rate maximum link error rate on a given link.
