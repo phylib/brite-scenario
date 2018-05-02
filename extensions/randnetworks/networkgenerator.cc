@@ -130,7 +130,7 @@ void NetworkGenerator::randomlyAddConnectionsBetweenTwoAS(int numberOfConnection
 
     p2p.SetDeviceAttribute ("DataRate", StringValue (bw));
     p2p.SetChannelAttribute ("Delay", StringValue (delay));
-    NetworkGenerator::setQueue(&p2p, m_queueName, m_queueSize);
+    //NetworkGenerator::setQueue(&p2p, m_queueName, m_queueSize);
 
     int number_as1 = rvariable->GetInteger (0,getNumberOfAS()-1);
     int number_as2 = number_as1;
@@ -291,54 +291,54 @@ void
 NetworkGenerator::setQueue(PointToPointHelper* p2p, std::string queueName, uint32_t queueSize)
 {
   if (!queueName.empty()) {
-    if (queueName.compare("DropTail_Packets") == 0) {
-      p2p->SetQueue("ns3::DropTailQueue", 
+    /*if (queueName.compare("DropTail_Packets") == 0) {
+      p2p->SetQueue("ns3::DropTailQueue",
         "Mode", StringValue("QUEUE_MODE_PACKETS"),
         "MaxPackets", StringValue(boost::lexical_cast<std::string>(queueSize)));
 
     } else if (queueName.compare("DropTail_Bytes") == 0) {
-      p2p->SetQueue("ns3::DropTailQueue", 
+      p2p->SetQueue("ns3::DropTailQueue",
         "Mode", StringValue("QUEUE_MODE_BYTES"),
         "MaxBytes", StringValue(boost::lexical_cast<std::string>(queueSize * 1000)));
 
     } else if (queueName.compare("Fair_Packets") == 0) {
-      p2p->SetQueue("ns3::FairQueue", 
+      p2p->SetQueue("ns3::FairQueue",
         "Mode", StringValue("QUEUE_MODE_PACKETS"),
         "MaxPackets", StringValue(boost::lexical_cast<std::string>(queueSize)));
 
     } else if (queueName.compare("Fair_Bytes") == 0) {
-      p2p->SetQueue("ns3::FairQueue", 
+      p2p->SetQueue("ns3::FairQueue",
         "Mode", StringValue("QUEUE_MODE_BYTES"),
         "MaxBytes", StringValue(boost::lexical_cast<std::string>(queueSize * 1000)));
 
     } else if (queueName.compare("PriorityQueue_Bytes") == 0) {
-      p2p->SetQueue("ns3::PriorityQueue", 
+      p2p->SetQueue("ns3::PriorityQueue",
         "Mode", StringValue("QUEUE_MODE_BYTES"),
         "MaxBytes", StringValue(boost::lexical_cast<std::string>(queueSize * 1000)));
 
     } else if (queueName.compare("PriorityQueue_Packets") == 0) {
-      p2p->SetQueue("ns3::PriorityQueue", 
+      p2p->SetQueue("ns3::PriorityQueue",
         "Mode", StringValue("QUEUE_MODE_PACKETS"),
         "MaxBytes", StringValue(boost::lexical_cast<std::string>(queueSize)));
 
     } else if (queueName.compare("WFQ") == 0) {
-      p2p->SetQueue("ns3::WFQ", 
+      p2p->SetQueue("ns3::WFQ",
         "Mode", StringValue("QUEUE_MODE_BYTES"),
         "MaxBytes", StringValue(boost::lexical_cast<std::string>(queueSize * 1000)));
 
     } else if (queueName.compare("REDQueue_Bytes") == 0) {
-      p2p->SetQueue("ns3::RedQueue", 
+      p2p->SetQueue("ns3::RedQueue",
         "Mode", StringValue("QUEUE_MODE_BYTES"),
         "QueueLimit", StringValue(boost::lexical_cast<std::string>(queueSize * 1000)));
 
     } else if (queueName.compare("REDQueue_Packets") == 0) {
-      p2p->SetQueue("ns3::RedQueue", 
+      p2p->SetQueue("ns3::RedQueue",
         "Mode", StringValue("QUEUE_MODE_PACKETS"),
         "QueueLimit", StringValue(boost::lexical_cast<std::string>(queueSize)));
     } else {
       std::cout << "Invalid Queue Name selected (NetworkGenerator)" << std::endl;
       exit(-1);
-    }
+    }*/
   }
 }
 
@@ -485,7 +485,7 @@ void NetworkGenerator::exportTopology(std::string fname, string server_identifie
   file.close ();
 }
 
-void 
+void
 NetworkGenerator::exportLinkFailures(std::string fname)
 {
   ofstream file;

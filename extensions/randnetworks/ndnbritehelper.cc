@@ -431,54 +431,54 @@ NDNBriteHelper::ConstructTopology ()
                                                     DataRateValue (DataRate ((*it).bandwidth * kbpsToBps)));
 
       if (!m_queueName.empty()) {
-        if (m_queueName.compare("DropTail_Packets") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::DropTailQueue", 
+        /*if (m_queueName.compare("DropTail_Packets") == 0) {
+          m_britePointToPointHelper.SetQueue("ns3::DropTailQueue",
             "Mode", StringValue("QUEUE_MODE_PACKETS"),
             "MaxPackets", StringValue(boost::lexical_cast<std::string>(m_queueSize)));
 
         } else if (m_queueName.compare("DropTail_Bytes") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::DropTailQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::DropTailQueue",
             "Mode", StringValue("QUEUE_MODE_BYTES"),
             "MaxBytes", StringValue(boost::lexical_cast<std::string>(m_queueSize * 1000)));
 
         } else if (m_queueName.compare("Fair_Packets") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::FairQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::FairQueue",
             "Mode", StringValue("QUEUE_MODE_PACKETS"),
             "MaxPackets", StringValue(boost::lexical_cast<std::string>(m_queueSize)));
 
         } else if (m_queueName.compare("Fair_Bytes") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::FairQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::FairQueue",
             "Mode", StringValue("QUEUE_MODE_BYTES"),
             "MaxBytes", StringValue(boost::lexical_cast<std::string>(m_queueSize * 1000)));
 
         } else if (m_queueName.compare("PriorityQueue_Bytes") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::PriorityQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::PriorityQueue",
             "Mode", StringValue("QUEUE_MODE_BYTES"),
             "MaxBytes", StringValue(boost::lexical_cast<std::string>(m_queueSize * 1000)));
 
         } else if (m_queueName.compare("PriorityQueue_Packets") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::PriorityQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::PriorityQueue",
             "Mode", StringValue("QUEUE_MODE_PACKETS"),
             "MaxBytes", StringValue(boost::lexical_cast<std::string>(m_queueSize)));
 
         } else if (m_queueName.compare("WFQ") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::WFQ", 
+          m_britePointToPointHelper.SetQueue("ns3::WFQ",
             "Mode", StringValue("QUEUE_MODE_BYTES"),
             "MaxBytes", StringValue(boost::lexical_cast<std::string>(m_queueSize * 1000)));
 
         } else if (m_queueName.compare("REDQueue_Bytes") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::RedQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::RedQueue",
             "Mode", StringValue("QUEUE_MODE_BYTES"),
             "QueueLimit", StringValue(boost::lexical_cast<std::string>(m_queueSize * 1000)));
 
         } else if (m_queueName.compare("REDQueue_Packets") == 0) {
-          m_britePointToPointHelper.SetQueue("ns3::RedQueue", 
+          m_britePointToPointHelper.SetQueue("ns3::RedQueue",
             "Mode", StringValue("QUEUE_MODE_PACKETS"),
             "QueueLimit", StringValue(boost::lexical_cast<std::string>(m_queueSize)));
         } else {
           std::cout << "Invalid Queue Name selected (NDNBriteHelper)" << std::endl;
           exit(-1);
-        }
+        }*/
       }
 
       m_netDevices.push_back ( new NetDeviceContainer ( m_britePointToPointHelper.Install (m_nodes.Get ((*it).srcId), m_nodes.Get ((*it).destId))));
